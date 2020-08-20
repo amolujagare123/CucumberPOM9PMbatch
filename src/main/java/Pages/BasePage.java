@@ -79,6 +79,7 @@ public class BasePage {
 
 
 	public String getTextFromElement(By locator) {
+
 		return webAction(locator).getText();
 	}
 
