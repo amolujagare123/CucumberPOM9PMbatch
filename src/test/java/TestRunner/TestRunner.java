@@ -7,7 +7,7 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(features = "Features",
         glue="StepDefinitions",
-        tags = "@TempVerify"
+        tags = "@VefifyTimeDiff"
 )
 
 public class TestRunner {
