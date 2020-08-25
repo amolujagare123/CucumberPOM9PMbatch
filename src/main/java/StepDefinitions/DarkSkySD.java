@@ -70,4 +70,14 @@ public class DarkSkySD {
 
     }
 
+    @Then("^I verify todays lowest and highest temp is displayed correctly$")
+    public void i_verify_todays_lowest_and_highest_temp_is_displayed_correctly() throws Throwable {
+
+        darkskyHomePage.clickExpand();
+        ArrayList<Integer> expectedTempList = darkskyHomePage.getBarTempList();
+        ArrayList<Integer> actualTempList = darkskyHomePage.getTimeLineTempList();
+
+        Assert.assertEquals("Temp list is not proper",expectedTempList,actualTempList);
+    }
+
 }

@@ -18,9 +18,8 @@ Then I verify timeline is displayed with two hours incremented
  #3
   @DayTimeline
 Scenario: Verify individual day temp timeline
-Given I am on Darksky Home Page
-  Given I am on Darksky Home Page
-Then I verify lowest and highest temp is displayed correctly
+    Given I am on Darksky Home Page
+Then I verify todays lowest and highest temp is displayed correctly
 
 
  #4
