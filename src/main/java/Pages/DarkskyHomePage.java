@@ -21,6 +21,12 @@ public class DarkskyHomePage extends BasePage {
     By minTempTimelineText = By.xpath("//div[@class='dayDetails revealed']//span[contains(@class,'high')]/span[1]") ;
     By maxTempTimelineText = By.xpath("//div[@class='dayDetails revealed']//span[contains(@class,'low')]/span[1]") ;
 
+    By lnkDarkSkyAPI = By.xpath("//a[contains(text(),'Dark Sky API')]");
+
+    public void clickLnkDarkSkyAPI()
+    {
+        clickOn(lnkDarkSkyAPI);
+    }
 
 
     public ArrayList<Integer> getBarTempList()
