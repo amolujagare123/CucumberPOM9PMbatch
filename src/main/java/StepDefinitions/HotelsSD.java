@@ -5,8 +5,10 @@ import Pages.HotelsSearchResult;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.Assert;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class HotelsSD {
 
@@ -32,12 +34,60 @@ public class HotelsSD {
     @Then("^I verify system displays only (.+) hotels on search result$")
     public void i_verify_system_displays_only_hotels_on_search_result(String stars) throws Throwable {
 
+        System.out.println(stars); // 5 stars
+
+        String expectedStar = stars.split(" ")[0]+"-star"; // 5-star
+        System.out.println(expectedStar);
+
         ArrayList<String> starList = hotelsSearchResult.getStarList();
 
         System.out.println(starList);
 
+        // here we have to check whether in the 'starList' all stars are
+        // 1. same
+        // 2. perticular star e.g. 5-star
+
+
+
+        int frequency = Collections.frequency(starList,expectedStar);
+        // occurance of the element in the collection say '5-star'
+
+        System.out.println("frequency/occarance:"+frequency);
+        int size = starList.size();
+
+        System.out.println("size:"+size);
+        // if occurance of the element in the collection is equal to size of the list
+        // it means that all elements are same
+
+       boolean result = frequency==size;
+
+        System.out.println("result:"+result);
+
+        Assert.assertTrue("All stars are not:"+stars,result);
+
 
     }
 
+
+    @Then("^I verify todays deal is less than \"([^\"]*)\" rs$")
+    public void i_verify_todays_deal_is_less_than_something_rs(String dealPricestr)  {
+
+        hotelsSearchResult.clickRatings("4");
+
+        int expectedDealPrice = Integer.parseInt(dealPricestr);
+
+        System.out.println("expectedDealPrice:"+expectedDealPrice);
+
+        int actualDealprice = hotelsSearchResult.getdealPrice();
+
+        boolean result =  actualDealprice<expectedDealPrice;
+
+        Assert.assertTrue("actal price ("+actualDealprice+") is greater than deal price:"
+                +expectedDealPrice,result);
+
+
+
+
+    }
 
 }

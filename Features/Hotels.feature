@@ -12,12 +12,9 @@ Feature: Hotels.com website testing
     Then I verify system displays only <stars> hotels on search result
     Examples:
       | stars   |
-     # | 5 stars |
+      #| 5 stars |
       | 4 stars |
     #  | 3 stars |
-
-
-
 
 #2
  @verifydistance
@@ -31,7 +28,7 @@ Feature: Hotels.com website testing
   @dealPrice
   Scenario: Verify todays deal price value
     Given I am on default locations search result screen
-    Then I verify todays deal is less than "500" rs
+    Then I verify todays deal is less than "1000" rs
 
 #4
   @roomcount
