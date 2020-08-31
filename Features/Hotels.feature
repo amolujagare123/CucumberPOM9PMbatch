@@ -18,10 +18,10 @@ Feature: Hotels.com website testing
 
 #2
  @verifydistance
-  Scenario: List of all of hotel within 35 km radius of airport or downtown // zip code 08837
+  Scenario: List of all of hotel within 5 km radius of airport or downtown // zip code 08837
     Given I am on default locations search result screen
-    Then I verify system displays all hotels within "35" Km radius of airport
-    And I verify "Holiday Inn" is within radius
+    Then I verify system displays all hotels within "5" Km radius of airport
+    And I verify "Grand Hyatt" is within radius
 
 
 #3

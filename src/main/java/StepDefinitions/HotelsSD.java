@@ -2,6 +2,7 @@ package StepDefinitions;
 
 import Pages.HotelsHomePage;
 import Pages.HotelsSearchResult;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -86,6 +87,55 @@ public class HotelsSD {
                 +expectedDealPrice,result);
 
 
+
+
+    }
+
+    @Then("^I verify system displays all hotels within \"([^\"]*)\" Km radius of airport$")
+    public void i_verify_system_displays_all_hotels_within_something_km_radius_of_airport(String expectedKMStr) {
+
+        int expectedKM = Integer.parseInt(expectedKMStr);
+
+        ArrayList<Double> distList = hotelsSearchResult.getDistanceAirportList();
+        System.out.println(distList);
+
+        boolean result = true;
+
+        ArrayList<Double> greaterDistance = new ArrayList<>();
+        for(int i=0;i<distList.size();i++)
+        {
+            if(distList.get(i)>expectedKM)
+            {
+                greaterDistance.add(distList.get(i));
+                result = false;
+
+            }
+
+        }
+
+        Assert.assertTrue("some distances are greater than:"+expectedKMStr
+                +"\nbelow is the greater distance list\n"+greaterDistance,result);
+
+    }
+
+    @And("^I verify \"([^\"]*)\" is within radius$")
+    public void i_verify_something_is_within_radius(String hotelName)  {
+
+        ArrayList<String> hotelsList = hotelsSearchResult.getHotelsnamelist();
+        System.out.println(hotelsList);
+
+        boolean result = false;
+
+        for(int i=0;i<hotelsList.size();i++)
+        {
+            if(hotelsList.get(i).contains(hotelName))
+            {
+                result = true;
+                break;
+            }
+        }
+
+        Assert.assertTrue("the hote :'"+hotelName+"' is not there in the search result",result);
 
 
     }

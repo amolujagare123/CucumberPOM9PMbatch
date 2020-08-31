@@ -8,6 +8,40 @@ public class HotelsSearchResult extends BasePage {
 
    By starlist  = By.xpath("//span[contains(@class,'star-rating-text')]");
    By dealPrice = By.xpath("//li[contains(@class,'deal-of-the-day')]//ins");
+   By distanceAirPort = By.xpath("//ul[@class='property-landmarks']//li[2]");
+
+   By hotelNameList  = By.xpath("//a[@class='property-name-link']");
+
+   public  ArrayList<String> getHotelsnamelist()
+   {
+       return getElementTextList(hotelNameList);
+   }
+
+
+   public ArrayList<Double> getDistanceAirportList()
+   {
+       ArrayList<Double> distList = new ArrayList<>();
+
+       ArrayList<String> distlistStr = getElementTextList(distanceAirPort);
+       // "3.5 km to Chhatrapati Shivaji International Airport (BOM)"
+
+       for(int i=0;i<distlistStr.size();i++)
+       {
+           String distanceText = distlistStr.get(i);
+           String distanceStr = distanceText.split(" ")[0]; // 3.5 in string
+           double distance = Double.parseDouble(distanceStr);
+
+           distList.add(distance);
+       }
+
+
+
+
+
+       return  distList;
+
+   }
+
 
 
    public int getdealPrice()
