@@ -1,8 +1,11 @@
 # new feature
 # Tags: optional
-
+@web
 Feature: Hotels.com website testing
 
+
+  Background: opening the web page
+    Given I am on hotels.com home page
 
 # 1
   @starVerify
@@ -33,11 +36,13 @@ Feature: Hotels.com website testing
 #4
   @roomcount
   Scenario Outline: Verify room count dropdown
-    Given I am on hotels.com home page
+    #Given I am on hotels.com home page
     When I select <select_rooms> from room dropdown
     Then I verify <number_of_room_dropdown> is displayed
+
     Examples:
       |select_rooms            | number_of_room_dropdown |
-      | 1                      | 1                       |
       | 2                      | 2                       |
+      | 5                      | 5                       |
+      | 9+                     | 0                       |
 

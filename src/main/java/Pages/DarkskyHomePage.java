@@ -1,5 +1,6 @@
 package Pages;
 
+import StepDefinitions.SharedSD;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 
@@ -60,11 +61,11 @@ public class DarkskyHomePage extends BasePage {
 
        public void clickExpand()
        {
-           JavascriptExecutor js = (JavascriptExecutor) driver;
+           JavascriptExecutor js = (JavascriptExecutor) SharedSD.getDriver();
 
            js.executeScript("window.scrollBy(0,900)", "");
 
-           js.executeScript("arguments[0].click()",driver.findElement(expander));
+           js.executeScript("arguments[0].click()",SharedSD.getDriver().findElement(expander));
 
           // clickOn(expander);
 

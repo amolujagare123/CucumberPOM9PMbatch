@@ -1,5 +1,6 @@
 package Pages;
 
+import StepDefinitions.SharedSD;
 import com.google.common.base.Function;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.FluentWait;
@@ -18,7 +19,7 @@ import static StepDefinitions.SharedSD.getDriver;
 
 
 public class BasePage {
-          static WebDriver driver = getDriver();
+         // static WebDriver driver = getDriver();
 
 
 
@@ -26,7 +27,7 @@ public class BasePage {
 	public static WebElement webAction(final By locator) {
 
 
-		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
+		Wait<WebDriver> wait = new FluentWait<WebDriver>(SharedSD.getDriver())
 
 				.withTimeout(Duration.ofSeconds(50)) // max time
 				.pollingEvery(Duration.ofSeconds(5)) // every 5 seconds
@@ -50,7 +51,7 @@ public class BasePage {
 
 	public ArrayList<String> getElementTextList(By locator)
 	{
-		List<WebElement> elements = driver.findElements(locator);
+		List<WebElement> elements = SharedSD.getDriver().findElements(locator);
 
 		ArrayList<String> txtList = new ArrayList<>();
 

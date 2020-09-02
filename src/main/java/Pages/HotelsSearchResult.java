@@ -1,5 +1,6 @@
 package Pages;
 
+import StepDefinitions.SharedSD;
 import org.openqa.selenium.By;
 
 import java.util.ArrayList;
@@ -85,8 +86,8 @@ public class HotelsSearchResult extends BasePage {
 
     public void clickRatings(String rating) {
 
-        driver.navigate().refresh();
-        driver.findElement(By.xpath("//input[@id='f-star-rating-"+rating+"']")).click();
+        SharedSD.getDriver().navigate().refresh();
+        SharedSD.getDriver().findElement(By.xpath("//input[@id='f-star-rating-"+rating+"']")).click();
     }
 
 }

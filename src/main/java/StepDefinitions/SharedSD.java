@@ -15,7 +15,7 @@ public class SharedSD {
 
     private static WebDriver driver = null;
 
-    @Before //("@web")
+    @Before ("@web")
     public static void before() throws IOException {
         ConfigReader config = new ConfigReader();
 
@@ -31,7 +31,7 @@ public class SharedSD {
       //  driver.get("https://darksky.net/forecast/40.7127,-74.0059/us12/en");
     }
 
-    @After//("@web")
+    @After("@web")
     public static void after() {
        /* if (driver != null) {
             driver.manage().deleteAllCookies();*/
